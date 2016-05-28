@@ -13,7 +13,7 @@ GPIO.setup(16,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.output(15,1)
 
 def flashLights(arg1, stop_event):
-	print "Flashing"
+	#print "Flashing"
 	x = 0
 	while(not stop_event.is_set()):
 		y = x % 2
@@ -39,16 +39,17 @@ while 1:
 	if (input and input != btn_prev_state):
 		btn_prev_state = input
 		if (not lightsonoff):
-			print "On"
+			#print "On"
 			stop_event = threading.Event()
 			thread = threading.Thread(target = flashLights, args=(1,stop_event))
 			thread.start()
 			lightsonoff = 1
 		else:
-			print "Off"
+			#print "Off"
 			stop_event.set()
 			lightsonoff = 0
-			stopFlashing
+			stopFlashing()
 	else:
 		btn_prev_state = input
+	time.sleep(0.05)
 		
