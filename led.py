@@ -20,7 +20,7 @@ def flashLights(arg1, stop_event):
 		GPIO.output(11 + y,1)
 		GPIO.output(12 - y,0)
 		x = x + 1
-		time.sleep(0.1)
+		time.sleep(0.3)
 
 def stopFlashing():
 	GPIO.output(11,0)
